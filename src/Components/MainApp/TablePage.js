@@ -1,8 +1,8 @@
 import React from 'react'
-import InputBox from './InputBox';
-import Table from './Table';
+import {InputBox} from '../CustomComponents/InputBox';
+import Table from './TablePage/Table';
 
-class MainComponent extends React.Component {
+class TablePage extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -10,6 +10,7 @@ class MainComponent extends React.Component {
         inputString: ''
       };
     }
+    
     
     buttonClick = () => {
         this.setState({isTable: !this.state.isTable});
@@ -22,6 +23,9 @@ class MainComponent extends React.Component {
     render() {
       return (
         <>
+          <p>
+            Home Page
+          </p>
           <InputBox changeState = {this.changeState} inputString = {this.state.inputString}/>
           <button onClick={this.buttonClick}>
             Table/Para
@@ -32,4 +36,4 @@ class MainComponent extends React.Component {
     }
   }
 
-export default MainComponent
+export default TablePage

@@ -23,14 +23,12 @@ export default class Table extends Component {
             {
                 for(let i = 0; i < this.state.tableSize; i++)
                 {
-                    rows.push(<div>{(i+1)*rootNumber}</div>) 
+                    rows.push(<div>{(i+1)*rootNumber}</div>)
                 }
             }
         }
         else
         {
-            console.log(isTable);
-            console.log(rootNumber);
             rows.push(<>{rootNumber}</>)
         }
         return rows;

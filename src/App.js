@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import MainComponent from './Components2/MainComponents'
+import { NavigationSetup } from './Components/NavigationSetup';
 
 // import {Paragraphs} from './Components/Paragraphs'
 
@@ -8,8 +8,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <MainComponent/>
+        <NavigationSetup/>
       </header>
+      
     </div>
 
     // <div className="App">
