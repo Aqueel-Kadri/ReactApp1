@@ -3,10 +3,10 @@ import Typography from "@mui/material/Typography";
 
 
 export const Complete = (props) => {
-  console.log(`username = ${props.username}`);
+  // console.log(`username = ${props.username}`);
   return (
     <Typography>
-        Thank you, {props.username}.
+        Thank you, {/*props.username*/}.
         Your account has been created.
     </Typography>
   )

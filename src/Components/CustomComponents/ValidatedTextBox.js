@@ -18,6 +18,7 @@ import {
   UPPER_CASE_VALIDATOR,
   USERNAME,
 } from "../../Consatnts/StringConstants";
+import PasswordVisibility from "./PasswordVisibility";
 
 export const ValidatedTextBox = (props) => {
   const [stateObj, setStateObj] = useState({
@@ -26,7 +27,20 @@ export const ValidatedTextBox = (props) => {
     helperText: "",
   });
 
+  const [isVisible, setIsVisible] = useState(!(props.type === "password"));
+  const [cnfIsVisible, setCnfIsVisible] = useState(false);
+  const [cnfDisabled, setCnfDisabled] = useState(true);
+  const [isDefault, setIsDefault] = useState(true);
 
+  
+
+  const switchCnfVisible = () => {
+    setCnfIsVisible(!cnfIsVisible);
+  };
+
+  const switchVisible = () => {
+    setIsVisible(!isVisible);
+  };
   const [cnfStateObj, setCnfStateObj] = useState({
     value: "",
     error: false,
@@ -82,6 +96,8 @@ export const ValidatedTextBox = (props) => {
   };
 
   const handleChange = (event) => {
+    setIsDefault(false);
+    console.log(`isDefault = ${isDefault}`)
     let stateObj = {
       value: "",
       error: false,
@@ -101,13 +117,20 @@ export const ValidatedTextBox = (props) => {
     } else {
       setStateObj(stateObj);
     }
-    if(props.errorUpdater)
-    {
+    if (props.errorUpdater) {
       props.errorUpdater(stateObj.error);
+    }
+    setCnfDisabled(stateObj.error);
+    if(stateObj.error)
+    {
+      setCnfStateObj({
+        ...cnfStateObj,
+        value: ''
+      })
     }
   };
 
-  const handleConfirm = (event) => {
+  const handleConfirmPasswordChange = (event) => {
     let cnfStateObj = {
       value: "",
       error: true,
@@ -121,45 +144,65 @@ export const ValidatedTextBox = (props) => {
       cnfStateObj.error = false;
     }
     setCnfStateObj(cnfStateObj);
-    if(props.cnfErrorUpdater)
-    {
+    if (props.cnfErrorUpdater) {
       props.cnfErrorUpdater(cnfStateObj.error);
     }
   };
 
   return (
     <>
+    {/* {console.log(`statObj = ${JSON.stringify(stateObj)}`)} */}
       <TextField
         margin="normal"
         required
         fullWidth
-        error={stateObj.error}
+        error={stateObj.value === '' ? false : stateObj.error}
         onChange={handleChange}
-        value={stateObj.value}
+        value={isDefault ? props.defaultValue :stateObj.value}
         helperText={stateObj.helperText}
         id={props.id}
         label={props.label}
         name={props.id}
-        type={props.type}
+        type={isVisible ? "text" : "password"}
         autoFocus={props.autoFocus}
+        InputProps={{
+          endAdornment: props.type === "password" && (
+            <PasswordVisibility
+              isVisible={isVisible}
+              switchVisible={switchVisible}
+            />
+          ),
+        }}
       />
+      {/* {props.type == PASSWORD.trim().toLowerCase() ? <Button onMouseDown={enableVisible} onMouseUp={disableVisible}>
+        {isVisible ? <VisibilityIcon color="action"/> : <VisibilityOffIcon color="action"/>}
+      </Button> : <></> */}
+      {/* } */}
+
       <>
-        {props.confirm ? (
+        {props.confirm && (
           <TextField
             margin="normal"
             required
             fullWidth
-            error={cnfStateObj.error}
-            onChange={handleConfirm}
+            disabled={cnfDisabled}
+            error={cnfStateObj.value === '' ? false : cnfStateObj.error}
+            onChange={handleConfirmPasswordChange}
             value={cnfStateObj.value}
             helperText={cnfStateObj.helperText}
             id={`confirm-${props.id}`}
             label={`Confirm ${props.label}`}
             name={`confirm-${props.id}`}
-            type={props.type}
+            type={cnfIsVisible ? "text" : "password"}
+            InputProps={{
+              endAdornment: props.type === "password" && (
+                <PasswordVisibility
+                  isVisible={cnfIsVisible}
+                  switchVisible={switchCnfVisible}
+                />
+              ),
+            }}
           />
-        ) : (
-          <></>
         )}
       </>
     </>

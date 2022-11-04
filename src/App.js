@@ -1,9 +1,13 @@
+import { Provider } from "react-redux";
 import "./App.css";
-import { NavigationSetup } from "./Components/NavigationSetup";
+import NavigationSetup from "./Components/NavigationSetup";
+import store from "./redux/store";
 
 function App() {
   return (
-    <NavigationSetup />
+    <Provider store={store}>
+      <NavigationSetup />
+    </Provider>
 
     // Table
     // Circular

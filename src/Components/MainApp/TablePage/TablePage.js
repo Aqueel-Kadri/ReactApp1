@@ -1,10 +1,12 @@
 import React from "react";
 // import {InputBox} from '../CustomComponents/InputBox';
 import Box from "@mui/material/Box";
-import Table from "./TablePage/Table";
+import Table from "./Table";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { connect } from "react-redux";
+import { checkIfTokenExpired } from "../../../redux/Actions/asyncActions";
 
 class TablePage extends React.Component {
   constructor(props) {
@@ -13,6 +15,7 @@ class TablePage extends React.Component {
       isTable: false,
       inputString: "",
     };
+    // console.log('at Home');
   }
 
   buttonClick = () => {
@@ -24,6 +27,7 @@ class TablePage extends React.Component {
   };
 
   render() {
+    this.props.checkIfTokenExpired(this.props.token);
     return (
       <Box
         sx={{
@@ -33,9 +37,7 @@ class TablePage extends React.Component {
           alignItems: "center",
         }}
       >
-        <Typography component="h1" variant="h5">
-          Home Page
-        </Typography>
+        
         <TextField
           margin="normal"
           id="rootNumber"
@@ -65,4 +67,8 @@ class TablePage extends React.Component {
   }
 }
 
-export default TablePage;
+const mapStateToProps = (state) => {
+  return { token: state.token };
+};
+
+export default connect(mapStateToProps, { checkIfTokenExpired })(TablePage);
