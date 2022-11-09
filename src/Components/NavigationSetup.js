@@ -37,12 +37,12 @@ const pages = [
 ];
 
 const NavigationSetup = (props) => {
-  
   return (
-    <Container component="main" maxWidth="sm">
-      <Router>
-        {/* <SearchAppBar /> */}
-        <NavBar pages={pages} />
+    // <Container component="main" maxWidth="sm">
+    <Router>
+      {/* <SearchAppBar /> */}
+      <NavBar pages={pages} />
+      <div className="flexi box container column">
         {/* <Box
           sx={{
             marginTop: 2,
@@ -75,19 +75,22 @@ const NavigationSetup = (props) => {
           )}
         </Box> */}
         {/* <BasicHeader/> */}
-        <Box
+        {/* <Box
           sx={{
             marginTop: 2,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
-        >
+        > */}
+        <div className="align end flexi column ten bluez">
           {props.isUser && (
             <Typography variant="overline">
               Welcome, {props.username}
             </Typography>
           )}
+        </div>
+        <div className="justify-center flexi ninety orange">
           <Routes>
             <Route
               exact
@@ -106,9 +109,11 @@ const NavigationSetup = (props) => {
               }
             />
           </Routes>
-        </Box>
-      </Router>
-    </Container>
+        </div>
+      </div>
+      {/* </Box> */}
+    </Router>
+    // </Container>
   );
 };
 

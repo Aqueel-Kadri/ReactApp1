@@ -20,7 +20,6 @@ class Calculator extends React.Component {
     this.onDeletePressed = this.onDeletePressed.bind(this);
   }
 
-
   onKeyPressed(text) {
     this.setState((prev) => ({
       expression: prev.expression + text,
@@ -49,7 +48,7 @@ class Calculator extends React.Component {
     for (let i = 1; i < 10; i++) {
       numberKeys.push(
         <CalcButton
-          sx={buttonSize}
+          // sx={buttonSize}
           key={i}
           text={i}
           onKeyPressed={this.onKeyPressed}
@@ -58,69 +57,139 @@ class Calculator extends React.Component {
     }
 
     return (
-      <Box
-        sx={{
-          marginTop: 2,
-          display: "flex",
-          flexFlow: "column wrap",
-          alignItems: "space-between",
-        }}
-      >
-        <DisplayWindow expression={this.state.expression} />
-        <Box
-          sx={{
-            marginTop: 2,
-            display: "flex",
-            flexFlow: "row wrap",
-            alignContent: "space-around",
-          }}
-        >
-          {numberKeys}
-          <CalcButton
-            sx={buttonSize}
-            text="*"
-            onKeyPressed={this.onKeyPressed}
-          />
-          <CalcButton
-            sx={buttonSize}
-            text="0"
-            onKeyPressed={this.onKeyPressed}
-          />
-          <CalcButton
-            sx={buttonSize}
-            text="+"
-            onKeyPressed={this.onKeyPressed}
-          />
-          <CalcButton
-            sx={buttonSize}
-            text="-"
-            onKeyPressed={this.onKeyPressed}
-          />
-
-          {/* <CalcButton text="-" onKeyPressed={this.onKeyPressed} /> */}
-          <CalcButton
-            sx={buttonSize}
-            text="/"
-            onKeyPressed={this.onKeyPressed}
-          />
-
-          <CalcButton
-            sx={buttonSize}
-            text="C"
-            onKeyPressed={this.onDeletePressed}
-          />
-          <Button
-            variant="contained"
+      // <Box
+      //   sx={{
+      //     marginTop: 2,
+      //     display: "flex",
+      //     flexFlow: "column wrap",
+      //     alignItems: "space-between",
+      //   }}
+      // >
+      <div className="full flexi column">
+        <div className="ten black"></div>
+        <div className="flexi column justified eighty bluez">
+          <div className="twenty orange">
+            <DisplayWindow expression={this.state.expression} />
+          </div>
+          {/* <Box
             sx={{
-              margin: 0.5,
-              width: 0.95,
+              marginTop: 2,
+              display: "flex",
+              flexFlow: "row wrap",
+              alignContent: "space-around",
             }}
-            onClick={this.onEvaluatePressed}
-          >
-            =
-          </Button>
-        </Box>
-      </Box>
+          > */}
+          <div className="flexi column seventy orange">
+            <div className="justified flexi bluez fiteen">
+              {numberKeys.slice(0, 3)}
+            </div>
+            <div className="black two"></div>
+            <div className="justified flexi bluez fiteen">
+              {numberKeys.slice(3, 6)}
+            </div>
+            <div className="black two"></div>
+            <div className="justified flexi bluez fiteen">
+              {numberKeys.slice(6, 9)}
+            </div>
+            <div className="black two"></div>
+            <div className="justified flexi bluez fiteen">
+              <CalcButton
+                // sx={buttonSize}
+                text="*"
+                onKeyPressed={this.onKeyPressed}
+              />
+              <CalcButton
+                // sx={buttonSize}
+                text="0"
+                onKeyPressed={this.onKeyPressed}
+              />
+              <CalcButton
+                // sx={buttonSize}
+                text="+"
+                onKeyPressed={this.onKeyPressed}
+              />
+            </div>
+            <div className="black two"></div>
+            <div className="justified flexi bluez fiteen">
+              <CalcButton
+                // sx={buttonSize}
+                text="-"
+                onKeyPressed={this.onKeyPressed}
+              />
+              <CalcButton
+                // sx={buttonSize}
+                text="/"
+                onKeyPressed={this.onKeyPressed}
+              />
+
+              <CalcButton
+                // sx={buttonSize}
+                text="C"
+                onKeyPressed={this.onDeletePressed}
+              />
+            </div>
+            <div className="black two"></div>
+            <div className="justified flexi bluez fiteen">
+              <Button
+                variant="contained"
+                className="full"
+                // sx={{
+                //   margin: 0.5,
+                //   width: 0.95,
+                // }}
+                onClick={this.onEvaluatePressed}
+              >
+                =
+              </Button>
+            </div>
+            {/* {numberKeys}
+            <CalcButton
+              // sx={buttonSize}
+              text="*"
+              onKeyPressed={this.onKeyPressed}
+            />
+            <CalcButton
+              // sx={buttonSize}
+              text="0"
+              onKeyPressed={this.onKeyPressed}
+            />
+            <CalcButton
+              // sx={buttonSize}
+              text="+"
+              onKeyPressed={this.onKeyPressed}
+            />
+            <CalcButton
+              // sx={buttonSize}
+              text="-"
+              onKeyPressed={this.onKeyPressed}
+            />
+            <CalcButton
+              // sx={buttonSize}
+              text="/"
+              onKeyPressed={this.onKeyPressed}
+            />
+
+            <CalcButton
+              // sx={buttonSize}
+              text="C"
+              onKeyPressed={this.onDeletePressed}
+            />
+            <Button
+              variant="contained"
+              // sx={{
+              //   margin: 0.5,
+              //   width: 0.95,
+              // }}
+              onClick={this.onEvaluatePressed}
+            >
+              =
+            </Button> */}
+          </div>
+          {/* </Box> */}
+        </div>
+        <div className="ten black"></div>
+      </div>
+      // </Box>
     );
   }
 }

@@ -13,7 +13,24 @@ class CalcButton extends React.Component {
   }
 
   render() {
-    return <Button sx={this.props.sx} variant="contained" onClick={this.onClick}>{this.props.text}</Button>;
+    return (
+      <div className="full flexi">
+        <div className="two"></div>
+        <Button
+          sx={this.props.sx}
+          style={
+            {
+              flex: "96"
+            }
+          }
+          variant="contained"
+          onClick={this.onClick}
+        >
+          {this.props.text}
+        </Button>
+        <div className="two"></div>
+      </div>
+    );
   }
 }
 

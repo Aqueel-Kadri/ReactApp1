@@ -29,40 +29,41 @@ class TablePage extends React.Component {
   render() {
     this.props.checkIfTokenExpired(this.props.token);
     return (
-      <Box
-        sx={{
-          marginTop: 1,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        
-        <TextField
-          margin="normal"
-          id="rootNumber"
-          label="Input String"
-          name="rootNumber"
-          autoFocus
-          value={this.state.inputString}
-          onChange={this.changeState}
-        />
-        <Button
-          type="submit"
-          variant="contained"
-          sx={{ mt: 3, mb: 2 }}
-          onClick={this.buttonClick}
-        >
-          Table / Para
-        </Button>
-
-        <Typography component="h1" variant="h5">
-          <Table
-            isTable={this.state.isTable}
-            rootNumber={this.state.inputString}
+      // <Box
+      //   sx={{
+      //     marginTop: 1,
+      //     display: "flex",
+      //     flexDirection: "column",
+      //     alignItems: "center",
+      //   }}
+      // >
+      <div className="flexi column orange">
+        <div className="flexi justified column forty bluez">
+          <TextField
+            margin="normal"
+            id="rootNumber"
+            label="Input String"
+            name="rootNumber"
+            autoFocus
+            value={this.state.inputString}
+            onChange={this.changeState}
           />
-        </Typography>
-      </Box>
+          <Button type="submit" variant="contained" onClick={this.buttonClick}>
+            Table / Para
+          </Button>
+
+          <Typography align="center" component="h1" variant="h5">
+            <Table
+              isTable={this.state.isTable}
+              rootNumber={this.state.inputString}
+            />
+          </Typography>
+        </div>
+        <div className="flexi column sixty orange"></div>
+      </div>
+      // <div className="fifty bluez"></div>
+      // </div>
+      // </Box>
     );
   }
 }

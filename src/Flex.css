@@ -1,6 +1,148 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 500px;
+  margin: auto;
+  max-width: 480px;
+  max-height: 640px;
+  /* height: 640px; */
+  /* border: solid salmon; */
+  /* padding: 10px; */
+  justify-content: space-between;
 }
+
+.box {
+  height: 640px;
+}
+
+.flexi {
+  display: flex;
+}
+
+.end {
+  justify-content: end;
+}
+
+.justified {
+  justify-content: space-around;
+}
+
+.align {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.auto-margin {
+  margin: auto;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.full {
+  flex: 100;
+}
+
+.ninety {
+  flex: 90;
+}
+
+.ninety-five {
+  flex: 95;
+}
+
+.eighty {
+  flex: 80;
+}
+
+.seventy-five {
+  flex: 75;
+}
+
+.seventy {
+  flex: 70;
+}
+
+.sixty {
+  flex: 60;
+}
+
+.fifty-five {
+  flex: 55;
+}
+
+.half {
+  flex: 50;
+}
+
+.forty {
+  flex: 40;
+}
+
+.thirty {
+  flex: 30;
+}
+
+.qtr {
+  flex: 25;
+}
+
+.twenty {
+  flex: 20;
+}
+
+.eighteen {
+  flex: 19
+}
+
+.fiteen {
+  flex: 15;
+}
+
+.twelve {
+  flex: 12;
+}
+
+.ten {
+  flex: 10;
+}
+
+.five {
+  flex: 5;
+}
+
+.four {
+  flex: 4;
+}
+
+.three {
+  flex: 3;
+}
+
+.two {
+  flex: 2;
+}
+
+.one {
+  flex: 1;
+}
+
+/* .bluez {
+  border: solid cyan;
+}
+
+.orange {
+  border: solid red;
+}
+.white {
+  background-color: white;
+}
+
+.black {
+  border: solid black;
+} */
